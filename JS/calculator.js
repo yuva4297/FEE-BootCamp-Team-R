@@ -2,9 +2,43 @@
 var result = 0;
 var expression = "";
 var operator = null;
-function calculate()
+var tempNumber = 0;
+function calculate(e)
 {
-    document.getElementById('answer').value = "HELLO";
+    result = result + parseInt(String.fromCharCode(e.which));
+    document.getElementById('answer').value = result;
+    var valueFromKeyboard = String.fromCharCode(e.which);
+    addValueToOperations(valueFromKeyboard);
+
+    
+}
+
+function addValueToOperations(value)
+{
+    expression = expression + value;
+    var isNumber = checkValueIsNumber(value);
+    if(isNumber)
+    {
+        tempNumber = parseInt(value);
+        console.log(tempNumber);
+    }
+    else
+    {
+        var isOperator = checkValueIsOperator(value);
+        if(isOperator)
+        {
+            operator = value;
+        }
+    }
+}
+function checkValueIsNumber(value)
+{
+    if(isNaN(value))
+    {
+        
+        return false;
+    }
+    return true;
 }
 var res;
 var input1;
