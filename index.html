@@ -7,11 +7,9 @@
     </head>
     <body>
         <div id='calc-contain'>
-  
-          <form name="calculator">
 
-            <input type="text" id="inputbox" name="string" />
-            <input type="text" id="resultbox" name="answer" />
+            <input type="text" id="expression" name="expression" />
+            <input type="text" id="answer" name="answer" />
             <br>
             
             <input type="button" id="one" value=" 1 " style="color:white" onclick="displayInput(1)" />
@@ -37,11 +35,13 @@
             <input type="button" id="equals" value=" = " style="color:orange" onclick="displayResult()" />
             <input type="button" id="divison" value=" / " style="color:orange" onclick="divide()" />
             </br>
-  
-    
-          </form>
+        
+            <input type="button" id="clear" value=" . " style="color:orange" onclick="" />
+            <input type="button" id="clear" value=" % " style="color:orange" onclick="" />
+            
+            <br/>
           <div id="agh">
-            <p>TEAM R caluculator</p>
+            <p>Standard calculator</p>
           </div>
         </div>
     </body>
