@@ -3,6 +3,7 @@
     <head>
         <title> caluculator</title>
         <link rel="stylesheet" href="css/design.css"></link>
+        <script src="JS/calculator.js"></script>
     </head>
     <body>
         <div id='calc-contain'>
@@ -11,28 +12,28 @@
             <input type="text" id="answer" name="answer" />
             <br>
             
-            <input type="button" id="one" value=" 1 " style="color:white" onclick="" />
-            <input type="button" id="two" value=" 2 " style="color:white" onclick="" />
-            <input type="button" id="three" value=" 3 " style="color:white" onclick="" />
-            <input type="button" id="plus" value=" + " style="color:orange" onclick="" />
+            <input type="button" id="one" value=" 1 " style="color:white" onclick="displayInput(1)" />
+            <input type="button" id="two" value=" 2 " style="color:white" onclick="displayInput(2)" />
+            <input type="button" id="three" value=" 3 " style="color:white" onclick="displayInput(3)" />
+            <input type="button" id="plus" value=" + " style="color:orange" onclick="add()" />
             <br/>
             
-            <input type="button" id="four" value=" 4 " style="color:white" onclick="" />
-            <input type="button" id="five" value=" 5 " style="color:white" onclick="" />
-            <input type="button" id="six" value=" 6 " style="color:white" onclick="" />
-            <input type="button" id="minus" value=" - " style="color:orange" onclick="" />
+            <input type="button" id="four" value=" 4 " style="color:white" onclick="displayInput(4)" />
+            <input type="button" id="five" value=" 5 " style="color:white" onclick="displayInput(5)" />
+            <input type="button" id="six" value=" 6 " style="color:white" onclick="displayInput(6)" />
+            <input type="button" id="minus" value=" - " style="color:orange" onclick="subtract()" />
             </br>
           
-            <input type="button" id="seven" value=" 7 " style="color:white" onclick="" />
-            <input type="button" id="eight" value=" 8 " style="color:white" onclick="" />
-            <input type="button" id="nine" value=" 9 " style="color:white" onclick="" />
-            <input type="button" id="mul" value=" x " style="color:orange" onclick="" />
+            <input type="button" id="seven" value=" 7 " style="color:white" onclick="displayInput(7)" />
+            <input type="button" id="eight" value=" 8 " style="color:white" onclick="displayInput(8)" />
+            <input type="button" id="nine" value=" 9 " style="color:white" onclick="displayInput(9)" />
+            <input type="button" id="mul" value=" x " style="color:orange" onclick="multiply()" />
             </br>
         
-            <input type="button" id="clear" value=" AC " style="color:orange" onclick="" />
-            <input type="button" id="zero" value=" 0 " style="color:white" onclick="" />
-            <input type="button" id="equals" value=" = " style="color:orange" onclick="" />
-            <input type="button" id="divison" value=" / " style="color:orange" onclick="" />
+            <input type="button" id="clear" value=" c " style="color:orange" onclick="clearinputbox()" />
+            <input type="button" id="zero" value=" 0 " style="color:white" onclick="displayInput(0)" />
+            <input type="button" id="equals" value=" = " style="color:orange" onclick="displayResult()" />
+            <input type="button" id="divison" value=" / " style="color:orange" onclick="divide()" />
             </br>
             
             <input type="button" id="clear" value=" . " style="color:orange" onclick="" />
