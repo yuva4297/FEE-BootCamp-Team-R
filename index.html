@@ -3,11 +3,12 @@
     <head>
         <title> caluculator</title>
         <link rel="stylesheet" href="css/design.css"></link>
+        <script src="JS/calculator.js"></script>
     </head>
     <body>
         <div id='calc-contain'>
 
-            <input type="text" id="expression" name="expression" />
+            <input type="text" id="expression" name="expression" onkeydown="calculate()" />
             <input type="text" id="answer" name="answer" />
             <br>
             
@@ -43,5 +44,6 @@
             <p>Standard calculator</p>
           </div>
         </div>
+        
     </body>
 </html>
