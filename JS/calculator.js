@@ -1,3 +1,11 @@
+
+var result = 0;
+var expression = "";
+var operator = null;
+function calculate()
+{
+    document.getElementById('answer').value = "HELLO";
+}
 var res;
 var input1;
 var input2;
@@ -38,4 +46,5 @@ function displayInput(disp)
 {
     display+=disp.toString();
     document.getElementById('inputbox').value=display;
+
 }
