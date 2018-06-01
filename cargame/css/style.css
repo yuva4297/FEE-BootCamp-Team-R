@@ -7,7 +7,7 @@ img {
 {
 
     position:relative;
-    top:100px;
+    top:89px;
     left:250px;
     font-family: cursive;
     font-size:60px;
@@ -18,15 +18,16 @@ img {
 
     position:relative;
     top:150px;
-    left:450px;
+    left:452px;
     size: 50px;
+    height:20px;
    
 }
 #bestscore
 {
 
     position:relative;
-    top:20px;
+    top:8px;
     left: 800px;
     font-size: 60px;
     font-family: cursive;
@@ -37,7 +38,7 @@ img {
 
     position:relative;
     top:150px;
-    left:950px;
+    left:965px;
     size: 50px;
    height:20px;
 }
