@@ -9,14 +9,6 @@ function calculate()
 var input1;
 var input2=[];
 var display="";
-function getFirstInput(inp1)
-{
-
-}
-function getSecondInput(inp2)
-{
-
-}
 function add()
 {
     if(display!="")
