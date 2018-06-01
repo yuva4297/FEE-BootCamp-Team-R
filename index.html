@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> caluculator</title>
+        <title>Simple caluculator</title>
         <link rel="stylesheet" href="css/design.css"></link>
         <script src="JS/calculator.js"></script>
     </head>
     <body>
         <div id='calc-contain'>
 
-            <input type="text" id="expression" name="expression" onkeydown="calculate()" />
+            <input type="text" id="expression" name="expression" onkeypress="calculate(event)" />
             <input type="text" id="answer" name="answer" />
             <br>
             
