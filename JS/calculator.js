@@ -20,7 +20,17 @@ function addValueToOperations(value)
     var isNumber = checkValueIsNumber(value);
     if(isNumber)
     {
-        tempNumber = parseInt(value);
+        var check = checkPreviousValue();
+        if(check)
+        {
+            result = result - tempNumber; 
+            tempNumber = tempNumber * 10;
+            tempNumber = tempNumber + parseInt(value);
+        }
+        else
+        {
+            tempNumber = parseInt(value);
+        }
         if(operator == "")
         {
             result = tempNumber;
@@ -33,6 +43,7 @@ function addValueToOperations(value)
         if(isOperator)
         {
             operator = value;
+            tempNumber = 0;
             console.log(operator);
         }
     }
@@ -48,9 +59,13 @@ function checkValueIsNumber(value)
 }
 function checkValueIsOperator(value)
 {
-    if(value == "+" || value == "-" || value == "*" || value == '/' )
+    if(value == "+" || value == "-" || value == "*" || value == '/' | value == "%" )
     {
         return true;
+    }
+    else if(value == "c")
+    {
+        clearinputbox();
     }
     return false;
 }
@@ -62,6 +77,15 @@ function calculateExpression()
     {
         doMathOperation();
     }
+}
+function checkPreviousValue()
+{
+    var previousValue = expression.charAt(expression.length-2);
+    if(checkValueIsNumber(previousValue))
+    {
+        return true;
+    }
+    return false;
 }
 function doMathOperation()
 {
@@ -77,53 +101,150 @@ function doMathOperation()
             result = result * tempNumber;
             break;
         case "/":
-            result = result /tempNumber;
+            result = result / tempNumber;
             break;
+        case "%":
+            result = result % tempNumber;
+            break;
+
         case "":
             result = tempNumber;
             break;
         
     }
 }
-var res;
 var input1;
-var input2;
+var input2=[];
 var display="";
-function getFirstInput(inp1)
-{
-
-}
-function getSecondInput(inp2)
-{
-
-}
 function add()
 {
+    if(display!="")
+    {
+operator+="+";
 input1=display;
+display+="+";
+document.getElementById('expression').value=display;
+    }
+    else{
+        alert("please enter any numbers before pressing operator");
+    }
 }
 function subtract()
 {
+    if(display!="")
+    {
+operator+="-";
 input1=display;
+display+="-";
+document.getElementById('expression').value=display;
+    }
+    else{
+        alert("please enter any numbers before pressing operator");
+    }
 }
 function multiply()
 {
+    if(display!="")
+    {
+operator+="*";
 input1=display;
+display+="*";
+document.getElementById('expression').value=display;
+    }
+    else{
+        alert("please enter any numbers before pressing operator");
+    }
 }
 function divide()
 {
+    if(display!="")
+    {
+operator+="/"
 input1=display;
+display+="/";
+document.getElementById('expression').value=display;
+    }
+    else{
+        alert("please enter any numbers before pressing operator");
+    }
+}
+function modulo()
+{
+    if(display!="")
+    {
+operator+="%";
+input1=display;
+display+="%";
+document.getElementById('expression').value=display;
+    }
+    else{
+        alert("please enter any numbers before pressing operator");
+    }
+}
+function decimal()
+{
+    display+=".";
+    document.getElementById('expression').value=display;
 }
 function displayResult()
 {
+    if(operator.length==1)
+    switch(operator)
+    {
+    case "+":
+            var split=document.getElementById('expression').value;
+            input2=split.split("+");
+            result=Number(input1)+Number(input2[1]);
+            document.getElementById('answer').value=result;
+            break;
+    case "-":
+            var split=document.getElementById('expression').value;
+            input2=split.split("-");
+            result=Number(input1)-Number(input2[1]);
+            document.getElementById('answer').value=result;
+            break;
+    case "*":
+            var split=document.getElementById('expression').value;
+            input2=split.split("*");
+            result=Number(input1)*Number(input2[1]);
+            document.getElementById('answer').value=result;
+            break;
+     case "/":
+            var split=document.getElementById('expression').value;
+            input2=split.split("/");
+            result=Number(input1)/Number(input2[1]);
+            document.getElementById('answer').value=result;
+            break;
+    case "%":
+            var split=document.getElementById('expression').value;
+            input2=split.split("%");
+            result=Number(input1)%Number(input2[1]);
+            document.getElementById('answer').value=result;
+            break;
+    default:
+            break;
 
+    }
+    else{
+        alert("invalid expression");
+        document.getElementById('expression').value="";
+        document.getElementById('answer').value="";
+        display="";
+    }
 }
 function clearinputbox()
 {
-document.getElementById('inputbox').value="";
+document.getElementById('expression').value="";
+document.getElementById('answer').value="";
+display="";
+tempNumber = 0;
+result = 0;
+operator = "";
+expression ="";
 }
 function displayInput(disp)
 {
     display+=disp.toString();
-    document.getElementById('inputbox').value=display;
+    document.getElementById('expression').value=display;
 
 }
