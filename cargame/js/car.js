@@ -1,30 +1,35 @@
-// document.addEventListener("keydown", function(event) {
-   
-//     console.log("Hello"+event);
-//     findTheDirectionPressed(event);
-//     findTheDirectionPressed(event)
-// {
-//     console.log(event.which);
-// }
-// });
-
 var objImage= null;
 var currentDirection="right";
 var interval;
+var speed = 5;
+var counter = 0;
+var limit = 30;
+var bestscore = 0;
+document.getElementById('bestscorebox').value = localStorage.getItem("value");
+
 			function init(){
-                
+               // 
 				objImage=document.getElementById("car");				
 				objImage.style.position='relative';
 				objImage.style.left='0px';
                 objImage.style.top='30px';
                 currentDirection = "right";
                 interval = 0;
+                speed = 5;
+                counter = 0;
+                //console.log(localStorage.getItem("value"));
+
+                updateBestScore();
                
             }
             function newGame()
             {
+
+                //console.log(localStorage.getItem("value")); 
                 init();
+                console.log(window.localStorage.getItem("value")); 
                 interval = setInterval("move(currentDirection)", 150);
+                updatescore();
             }
             function stopGame()
             {
@@ -57,6 +62,17 @@ var interval;
                     moveDown();
                 }
                 stopGame();
+                counter++;
+                updatescore();
+              
+                if(counter >= limit)
+                {
+                    increasespeed();
+                    
+                    limit = limit +30;
+                    //console.log(limit);
+                }
+                
             }
 			function getKeyAndMove(e){	
                 	
@@ -77,25 +93,44 @@ var interval;
 					case 40: 
                         
                         currentDirection = "down";
-						break;						
+                        break;
+                    default:
+                        break;						
 				}
 			}
 			function moveLeft(){
                 objImage.style.transform="rotateY(150deg)";
-                objImage.style.left=parseInt(objImage.style.left)-5 +'px';
+                objImage.style.left=parseInt(objImage.style.left)-speed +'px';
                
 			}
 			function moveUp(){
                 objImage.style.transform=" rotateZ(-90deg)";
-				objImage.style.top=parseInt(objImage.style.top)-5 +'px';
+				objImage.style.top=parseInt(objImage.style.top)-speed +'px';
 			}
 			function moveRight(){
                 objImage.style.transform=" rotate(360deg)";
-				objImage.style.left=parseInt(objImage.style.left)+5 +'px';
+				objImage.style.left=parseInt(objImage.style.left)+speed +'px';
 			}
 			function moveDown(){
                 objImage.style.transform=" rotate(90deg)";
-				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
+				objImage.style.top=parseInt(objImage.style.top)+speed +'px';
+            }
+            function increasespeed()
+            {
+                speed = speed + 5;
+            }
+            function updatescore()
+            {
+                document.getElementById("scorebox").value = counter;
+                
+                //
+            }
+            function updateBestScore()
+            {
+                document.getElementById('bestscorebox').value =   document.getElementById("scorebox").value;
+                localStorage.setItem("value",counter);
+                localStorage.getItem("value");
+                //console.log(localStorage.getItem("value"));
+               
             }
             
-			
