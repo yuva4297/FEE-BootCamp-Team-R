@@ -10,16 +10,22 @@
 </head>
 
 <!-- <body onkeydown="catchKeyEvent(event)"> -->
-    <body>
-    <input type"text" id="scorebox">
-    <input type"text" id="bestscorebox">
-    <div id="score"> Score:</div>
-    <div id="bestscore"> Best Score:</div>
+    <body onkeydown="getKeyAndMove(event)">
+        <nav id ="scoreboard">
+            <div id="currentscore">
+                <div id="score">Score</div>
+                <input type"text" id="scorebox">
+            </div>
+            <div id="bestscoredetail">
+                <div id="bestscore"> Best Score</div>
+                <input type"text" id="bestscorebox"> 
+            </div>     
+        </nav>
     <div id="play-ground">
         <img id="car" src="cr.png" alt="">
     </div>
     <div id="controls">
-        <button id="start" onclick="">NEW GAME</button>
+        <button id="start" onclick="newGame()">NEW GAME</button>
         
     </div>
     <script src="js/car.js"></script>
