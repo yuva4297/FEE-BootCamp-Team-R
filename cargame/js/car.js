@@ -2,10 +2,11 @@ var objImage= null;
 var currentDirection="right";
 var interval;
 var speed = 5;
+var score = 0;
 var counter = 0;
 var limit = 30;
 var bestscore = 0;
-document.getElementById('bestscorebox').value = localStorage.getItem("value");
+// document.getElementById('bestscorebox').value = localStorage.getItem("value");
 
 			function init(){
                // 
@@ -17,9 +18,9 @@ document.getElementById('bestscorebox').value = localStorage.getItem("value");
                 interval = 0;
                 speed = 5;
                 counter = 0;
-                //console.log(localStorage.getItem("value"));
-
-                updateBestScore();
+                 
+                document.getElementById('bestscorebox').value = localStorage.getItem("value");
+               
                
             }
             function newGame()
@@ -36,7 +37,9 @@ document.getElementById('bestscorebox').value = localStorage.getItem("value");
                 if((parseInt(objImage.style.left)<0)||(parseInt(objImage.style.left)>875)||(parseInt(objImage.style.top)<30)||(parseInt(objImage.style.top)>410))		
                 {
                     alert("game over");
+                    
                     clearInterval(interval); 
+                    best_score();
                     init();
                 }	
                
@@ -63,6 +66,7 @@ document.getElementById('bestscorebox').value = localStorage.getItem("value");
                 }
                 stopGame();
                 counter++;
+                score = counter;
                 updatescore();
               
                 if(counter >= limit)
@@ -97,7 +101,23 @@ document.getElementById('bestscorebox').value = localStorage.getItem("value");
                     default:
                         break;						
 				}
-			}
+            }
+            function best_score()
+            {
+                bestscore = localStorage.getItem("value");
+                if(bestscore!==null)
+                {
+                    if(score>bestscore)
+                    {
+                        localStorage.setItem("value",score);
+                        bestscore = score;
+                    }
+                    else{
+                        localStorage.setItem("value",bestscore);
+                    }
+                    document.getElementById("bestscorebox").value = bestscore;
+                }
+            }
 			function moveLeft(){
                 objImage.style.transform="rotateY(150deg)";
                 objImage.style.left=parseInt(objImage.style.left)-speed +'px';
@@ -121,16 +141,9 @@ document.getElementById('bestscorebox').value = localStorage.getItem("value");
             }
             function updatescore()
             {
-                document.getElementById("scorebox").value = counter;
+                document.getElementById("scorebox").value = score;
                 
-                //
+         
             }
-            function updateBestScore()
-            {
-                document.getElementById('bestscorebox').value =   document.getElementById("scorebox").value;
-                localStorage.setItem("value",counter);
-                localStorage.getItem("value");
-                //console.log(localStorage.getItem("value"));
-               
-            }
+          
             
