@@ -20,7 +20,17 @@ function addValueToOperations(value)
     var isNumber = checkValueIsNumber(value);
     if(isNumber)
     {
-        tempNumber = parseInt(value);
+        var check = checkPreviousValue();
+        if(check)
+        {
+            result = result - tempNumber; 
+            tempNumber = tempNumber * 10;
+            tempNumber = tempNumber + parseInt(value);
+        }
+        else
+        {
+            tempNumber = parseInt(value);
+        }
         if(operator == "")
         {
             result = tempNumber;
@@ -33,6 +43,7 @@ function addValueToOperations(value)
         if(isOperator)
         {
             operator = value;
+            tempNumber = 0;
             console.log(operator);
         }
     }
@@ -48,9 +59,13 @@ function checkValueIsNumber(value)
 }
 function checkValueIsOperator(value)
 {
-    if(value == "+" || value == "-" || value == "*" || value == '/' )
+    if(value == "+" || value == "-" || value == "*" || value == '/' | value == "%" )
     {
         return true;
+    }
+    else if(value == "c")
+    {
+        clearinputbox();
     }
     return false;
 }
@@ -62,6 +77,15 @@ function calculateExpression()
     {
         doMathOperation();
     }
+}
+function checkPreviousValue()
+{
+    var previousValue = expression.charAt(expression.length-2);
+    if(checkValueIsNumber(previousValue))
+    {
+        return true;
+    }
+    return false;
 }
 function doMathOperation()
 {
@@ -77,8 +101,12 @@ function doMathOperation()
             result = result * tempNumber;
             break;
         case "/":
-            result = result /tempNumber;
+            result = result / tempNumber;
             break;
+        case "%":
+            result = result % tempNumber;
+            break;
+
         case "":
             result = tempNumber;
             break;
@@ -209,6 +237,10 @@ function clearinputbox()
 document.getElementById('expression').value="";
 document.getElementById('answer').value="";
 display="";
+tempNumber = 0;
+result = 0;
+operator = "";
+expression ="";
 }
 function displayInput(disp)
 {
