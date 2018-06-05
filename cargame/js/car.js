@@ -27,7 +27,7 @@ var bestscore = 0;
             {
 
                 //console.log(localStorage.getItem("value")); 
-                init();
+               init();
                 console.log(window.localStorage.getItem("value")); 
                 interval = setInterval("move(currentDirection)", 150);
                 updatescore();
